@@ -1,2 +1,2 @@
-*.exe
-*.txt
+**/.exe
+foo\[01\].txt
