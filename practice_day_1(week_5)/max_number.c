@@ -1,25 +1,24 @@
 #include <stdio.h>
-int mx_number(int a[], int n, int i, int mx)
+#include <limits.h>
+int mx_number(int a[], int n, int i)
 {
-    // printf("%d\n", mx);
     if (i == n)
-        return mx;
-    if (a[i] > mx)
+        return INT_MIN;
+    int ans = mx_number(a, n, i + 1);
+    if (ans < a[i])
     {
-        mx = a[i];
-        return mx_number(a, n, ++i, mx);
+        return a[i];
     }
-    return mx_number(a, n, ++i, mx);
+    return ans;
 }
 int main()
 {
     int n;
     scanf("%d", &n);
     int a[n];
-    int ele = -1e9;
     for (int i = 0; i < n; i++)
         scanf("%d", &a[i]);
-    int ans = mx_number(a, n, 0, ele);
+    int ans = mx_number(a, n, 0);
     printf("%d", ans);
     return 0;
 }
